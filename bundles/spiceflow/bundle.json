@@ -73,7 +73,7 @@
       "destination": "installers/ryoku-palette-bridge.sh",
       "mode": "0755",
       "size": 3175,
-      "sha256": "bec920f8318330efcafbe0e1bf19f21c1a84113787ae1b4844bb017c722fc54b",
+      "sha256": "c808eb5d0df4a3665c01bed6891d0f4309580e400a910209293cbf7a81b1a66c",
       "install": false
     }
   ]
