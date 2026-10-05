@@ -21,6 +21,7 @@ index. An item is invisible to the desktop until it is listed in that registry.
 | `livewalls/` | Live (video) wallpapers | ryowalls -> Ryoku source |
 | `bundles/` | Curated sets of packages, scripts, and plugins installed together | Settings -> Extras |
 | `nautilus/` | Right-click file-manager script packs (installed by a bundle) | Files right-click menu |
+| `vesktop-themes/` | CSS themes for Vesktop/Vencord | Ryostore -> Vesktop Themes |
 | `ryotunes-skins/` | Ryotunes skins: palette, type, radii and motion for the music player | Ryotunes -> Settings -> Appearance |
 
 `installers/` holds small, auditable curl/script installers that a bundle item
@@ -80,7 +81,7 @@ Deep, per-catalogue authoring references live beside each catalogue
 - **Run the check before you push:** `tests/validate-catalogue.sh`. Trusted CI
   validates the catalogue on main; pull requests receive the isolated security
   screen and catalogue-integrity checks described in [SECURITY.md](SECURITY.md).
-- **Plugins and Ryotunes skins carry a per-file manifest.** After any change to
+- **Plugins, Ryotunes skins and Vesktop themes carry a per-file manifest.** After any change to
   such a product's files, regenerate it and its registry hash with
   `tools/pack-product.py <category>/<id>` (e.g. `plugins/obsidian` or
   `ryotunes-skins/nord-light`).

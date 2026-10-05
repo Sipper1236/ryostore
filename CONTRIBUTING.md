@@ -44,6 +44,7 @@ manifest fields:
 | A Nautilus script pack | `nautilus/video-reformat/` | [`nautilus/AUTHORING.md`](nautilus/AUTHORING.md) |
 | A live wallpaper | an existing `livewalls/<id>/` | [`livewalls/README.md`](livewalls/README.md) |
 | A fastfetch preset (terminal readout) | `fastfetch/ryoku-dossier/` | [`fastfetch/AUTHORING.md`](fastfetch/AUTHORING.md) |
+| A Vesktop CSS theme | `vesktop-themes/ryoku-paper/` | [`vesktop-themes/AUTHORING.md`](vesktop-themes/AUTHORING.md) |
 | A Ryotunes skin (palette, type, radii, motion) | `ryotunes-skins/template/` | [`ryotunes-skins/AUTHORING.md`](ryotunes-skins/AUTHORING.md) |
 | A lockscreen, bar style, launcher image, decor | an existing item in that catalogue | copy the layout of a neighbour |
 

@@ -26,7 +26,7 @@ PACK_SPEC.loader.exec_module(pack_product)
 
 CATEGORIES = (
     "rices", "lockscreens", "barstyles", "fastfetch", "plugins", "bundles",
-    "decors", "launcher-images", "fastfetch-emblems", "ryotunes-skins",
+    "decors", "launcher-images", "fastfetch-emblems", "ryotunes-skins", "vesktop-themes",
 )
 
 
@@ -95,6 +95,23 @@ def build_skin_product(root: Path, product_id: str = "demo") -> tuple[Path, dict
 def build_product(root: Path, category: str, product_id: str = "demo") -> tuple[Path, dict]:
     if category == "ryotunes-skins":
         return build_skin_product(root, product_id)
+    if category == "vesktop-themes":
+        product = root / category / product_id
+        product.mkdir(parents=True, exist_ok=True)
+        (product / "Demo.theme.css").write_text(".theme-dark { --text-normal: #eeeeee; }\n")
+        (product / "preview.png").write_bytes(b"fixture preview")
+        entry = {
+            "id": product_id, "name": "Demo", "version": "1.0.0",
+            "path": f"{category}/{product_id}", "author": "Ryoku",
+            "summary": "Demo theme", "description": "Demo theme.",
+            "tags": ["dark"], "accent": "#eeeeee", "surface": "#101010",
+            "preview": "preview.png", "screenshots": [],
+            "manifest": "manifest.json", "manifestSha256": "0" * 64,
+        }
+        write_json(root / category / "registry.json", {"schema": 1, category: [entry]})
+        pack_product.pack_product(root, category, product_id)
+        entry = json.loads((root / category / "registry.json").read_text())[category][0]
+        return product, entry
     product = root / category / product_id
     content = product / "content" / "Widget.qml"
     preview = product / "assets" / "preview.png"
@@ -796,3 +813,34 @@ class PackProductTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class VesktopThemeContractTest(unittest.TestCase):
+    def test_only_flat_non_executable_css_is_installable(self):
+        entry = {"id": "demo"}
+        for destination, mode in [("nested/Demo.theme.css", "0644"),
+                                  ("nested\\Demo.theme.css", "0644"),
+                                  (".theme.css", "0644"),
+                                  ("install.sh", "0755"),
+                                  ("Demo.theme.css", "0755")]:
+            with self.subTest(destination=destination, mode=mode):
+                errors = []
+                manifest = {"destination": "ryoku/vesktop-themes/demo", "files": [
+                    {"destination": destination, "mode": mode, "install": True}]}
+                validate_store.validate_vesktop_theme(entry, manifest, errors)
+                self.assertTrue(errors)
+
+    def test_rejects_multiple_installed_themes(self):
+        errors = []
+        validate_store.validate_vesktop_theme({"id": "demo"}, {
+            "destination": "ryoku/vesktop-themes/demo",
+            "files": [{"destination": name, "mode": "0644", "install": True}
+                      for name in ("One.theme.css", "Two.theme.css")],
+        }, errors)
+        self.assertTrue(errors)
+
+    def test_cannot_set_an_absolute_destination_or_empty_payload(self):
+        errors = []
+        validate_store.validate_vesktop_theme({"id": "demo"},
+            {"destination": "/home/user/.config/vesktop/themes", "files": []}, errors)
+        self.assertEqual(len(errors), 2)

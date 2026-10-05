@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "id": "ryoku-paper",
+  "category": "vesktop-themes",
+  "version": "1.0.0",
+  "destination": "ryoku/vesktop-themes/ryoku-paper",
+  "files": [
+    {
+      "source": "LICENSE",
+      "destination": "LICENSE",
+      "sha256": "854b2360f12745ad6a5c1189e3aef141767fde5009757a4712bd3d99555e9c41",
+      "mode": "0644",
+      "size": 1078,
+      "install": false
+    },
+    {
+      "source": "README.md",
+      "destination": "README.md",
+      "sha256": "56c7ae34f4378c888ab333bd5db6c42959dd8d91d915ec33785a637a2dcf5cdc",
+      "mode": "0644",
+      "size": 781,
+      "install": false
+    },
+    {
+      "source": "RyokuPaper.theme.css",
+      "destination": "RyokuPaper.theme.css",
+      "sha256": "c575deea53789b15c6d60e5844dc9d3a735ac05764f6259c0876d012319af7c1",
+      "mode": "0644",
+      "size": 1813,
+      "install": true
+    },
+    {
+      "source": "preview.svg",
+      "destination": "preview.svg",
+      "sha256": "1d021f4deb1f431e4073eb845b26dd32097d4fb963b3b47ebef4cb5bc808c6a4",
+      "mode": "0644",
+      "size": 1164,
+      "install": false
+    }
+  ]
+}

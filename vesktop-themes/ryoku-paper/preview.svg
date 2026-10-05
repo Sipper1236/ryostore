@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#141210"/>
+<rect x="80" y="80" width="1440" height="740" rx="32" fill="#24211f"/>
+<text x="150" y="200" fill="#f5eadb" font-family="sans-serif" font-size="64">Ryoku Paper</text>
+<text x="150" y="270" fill="#b9aa98" font-family="sans-serif" font-size="28">Warm dark colours for Vesktop</text>
+<rect x="150" y="350" width="1260" height="200" rx="20" fill="#1d1a18"/>
+<text x="200" y="430" fill="#ede1d0" font-family="sans-serif" font-size="36">Paper, ink, vermilion.</text>
+<text x="200" y="490" fill="#b9aa98" font-family="sans-serif" font-size="26">Readable surfaces. A quiet background. A warm accent.</text>
+<rect x="150" y="610" width="280" height="90" rx="12" fill="#c94e3f"/>
+<rect x="470" y="610" width="280" height="90" rx="12" fill="#ede1d0"/>
+<rect x="790" y="610" width="280" height="90" rx="12" fill="#695447"/>
+<rect x="1110" y="610" width="280" height="90" rx="12" fill="#302b27"/>
+<text x="150" y="770" fill="#b9aa98" font-family="sans-serif" font-size="24">Palette illustration • not a Discord screenshot</text>
+</svg>

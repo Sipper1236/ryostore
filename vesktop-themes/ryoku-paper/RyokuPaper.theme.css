@@ -1,0 +1,51 @@
+/**
+ * @name Ryoku Paper
+ * @author Ryoku contributors
+ * @version 1.0.0
+ * @description Warm dark paper with a vermilion accent. Original MIT licensed CSS.
+ * @source https://github.com/ryoku-dev/ryostore/tree/main/vesktop-themes/ryoku-paper
+ */
+
+/* Discord semantic tokens keep this theme independent of generated class names.
+   No network imports, scripts, fonts or remote artwork are required. */
+.theme-dark {
+    --background-primary: #24211f;
+    --background-secondary: #1d1a18;
+    --background-secondary-alt: #191614;
+    --background-tertiary: #141210;
+    --background-floating: #302b27;
+    --background-accent: #413831;
+    --background-base-lowest: #141210;
+    --background-base-lower: #1d1a18;
+    --background-base-low: #24211f;
+    --background-surface-high: #302b27;
+    --background-surface-higher: #38312c;
+    --background-surface-highest: #413831;
+    --text-normal: #ede1d0;
+    --text-primary: #ede1d0;
+    --text-muted: #b9aa98;
+    --text-secondary: #b9aa98;
+    --header-primary: #f5eadb;
+    --header-secondary: #c9b8a4;
+    --interactive-normal: #c9b8a4;
+    --interactive-hover: #ede1d0;
+    --interactive-active: #f5eadb;
+    --channels-default: #b9aa98;
+    --channel-icon: #b9aa98;
+    --brand-500: #c94e3f;
+    --brand-560: #b44034;
+    --brand-600: #a4372e;
+    --brand-experiment: #c94e3f;
+    --text-link: #ee9a71;
+    --button-danger-background: #b44034;
+    --scrollbar-thin-thumb: #695447;
+    --scrollbar-thin-track: transparent;
+    --scrollbar-auto-thumb: #695447;
+    --scrollbar-auto-track: #1d1a18;
+    --background-mentioned: #c94e3f1a;
+    --background-mentioned-hover: #c94e3f26;
+    --background-message-hover: #ede1d008;
+    --background-modifier-hover: #ede1d00a;
+    --background-modifier-selected: #ede1d015;
+    --background-modifier-accent: #ede1d01f;
+}

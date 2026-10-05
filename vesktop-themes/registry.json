@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "vesktop-themes": [
+    {
+      "id": "ryoku-paper",
+      "name": "Ryoku Paper",
+      "version": "1.0.0",
+      "path": "vesktop-themes/ryoku-paper",
+      "author": "Ryostore contributors",
+      "summary": "Warm dark paper with a vermilion accent",
+      "description": "An original MIT licensed dark colour theme using Discord semantic tokens. No external imports or artwork. Enable it in Vesktop Settings → Vencord → Themes after installation. Preview is a palette illustration.",
+      "tags": [
+        "vesktop",
+        "discord",
+        "dark",
+        "warm"
+      ],
+      "accent": "#c94e3f",
+      "surface": "#24211f",
+      "preview": "preview.svg",
+      "screenshots": [],
+      "manifest": "manifest.json",
+      "manifestSha256": "e8ddd1414b19097db8568caff48e660dc5efd8133ef290643c9cb418ef704997",
+      "lastUpdated": "2026-10-04",
+      "official": false,
+      "license": "MIT",
+      "upstream": "https://github.com/ryoku-dev/ryostore/tree/main/vesktop-themes/ryoku-paper"
+    }
+  ]
+}

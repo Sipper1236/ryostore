@@ -14,7 +14,7 @@ from typing import Iterable
 
 CATEGORIES = (
     "rices", "lockscreens", "barstyles", "fastfetch", "plugins", "bundles",
-    "decors", "launcher-images", "fastfetch-emblems", "ryotunes-skins",
+    "decors", "launcher-images", "fastfetch-emblems", "ryotunes-skins", "vesktop-themes",
 )
 REQUIRED_ENTRY_FIELDS = (
     "id", "name", "version", "path", "author", "summary", "description",
@@ -429,6 +429,25 @@ def validate_ryotunes_skin(entry: dict, product: Path, manifest: object, errors:
         errors.append(f"{label}: preview must be declared with install false")
 
 
+def validate_vesktop_theme(entry: dict, manifest: object, errors: list[str]) -> None:
+    """Only flat CSS payloads are published into Vencord's themes directory."""
+    label = f"vesktop-themes/{entry.get('id', '?')}"
+    if not isinstance(manifest, dict):
+        return
+    if manifest.get("destination") != f"ryoku/vesktop-themes/{entry.get('id')}":
+        errors.append(f"{label}: invalid managed theme destination")
+    installed = [row for row in manifest.get("files", [])
+                 if isinstance(row, dict) and row.get("install") is True]
+    if len(installed) != 1:
+        errors.append(f"{label}: needs exactly one installed .theme.css file")
+    for row in installed:
+        destination = row.get("destination")
+        if (not isinstance(destination, str)
+                or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*\.theme\.css", destination)
+                or row.get("mode") != "0644"):
+            errors.append(f"{label}: installed payload must be a flat non-executable .theme.css file")
+
+
 def validate_entry(category: str, entry: object, root: Path, errors: list[str], require_media: bool) -> None:
     if not isinstance(entry, dict):
         errors.append(f"{category}/?: registry entry must be an object")
@@ -490,6 +509,8 @@ def validate_entry(category: str, entry: object, root: Path, errors: list[str], 
         validate_manifest(category, entry, product, manifest, errors, require_media)
         if category == "bundles":
             validate_bundle_components(entry, manifest, errors)
+        elif category == "vesktop-themes":
+            validate_vesktop_theme(entry, manifest, errors)
         elif category == "ryotunes-skins":
             validate_ryotunes_skin(entry, product, manifest, errors)
 

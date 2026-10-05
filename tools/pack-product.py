@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-"""Build a plugin product-manifest.json and refresh its registry hash.
+"""Build a product manifest and refresh its registry hash.
 
 Usage:
     tools/pack-product.py <category>/<id> [--touch]
     e.g. tools/pack-product.py plugins/vpn --touch
 
-Two categories ship a per-file manifest (schema 1, with ``destination`` and a
+Three categories ship a per-file manifest (schema 1, with ``destination`` and a
 ``files`` array) that this tool reproduces: ``plugins`` (manifest
 ``product-manifest.json``, destination ``ryoku/plugins/<id>``) and
 ``ryotunes-skins`` (manifest ``manifest.json``, destination
-``ryoku/ryotunes-skins/<id>``). Both name their manifest file in the registry
-entry's ``manifest`` field. Every other category installs differently and has no
+``ryoku/ryotunes-skins/<id>``), and ``vesktop-themes`` (manifest ``manifest.json``,
+destination ``ryoku/vesktop-themes/<id>``). Each names its manifest file in the
+registry entry's ``manifest`` field. Every other category installs differently and has no
 such manifest to reproduce, so generalising further would be guesswork.
 
 The manifest is derived to match the convention already in the tree, verified by
@@ -43,7 +44,7 @@ import sys
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SUPPORTED_CATEGORIES = ("plugins", "ryotunes-skins")
+SUPPORTED_CATEGORIES = ("plugins", "ryotunes-skins", "vesktop-themes")
 
 
 def _load_validator():
